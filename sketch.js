@@ -9,7 +9,7 @@ function draw() {
   background(0);
   noStroke();
   fill(255,0,0);
-  ellipse(mouseX,mouseY,0,0);
+  ellipse(mouseX,mouseY,10,10);
   
 
 }
