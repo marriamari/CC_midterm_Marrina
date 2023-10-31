@@ -1,5 +1,4 @@
-
-class Brush {
+class Hair {
     constructor(x,y){
         this.position =new createVector (x,y);
     }
@@ -8,9 +7,11 @@ class Brush {
 
         stroke('#d40f78');
         strokeWeight(2);
-        if(mouseIsPressed){
-            line(mX, mY, mX + 10, mY + 5);
-            print(mouseX, mouseY)
+        for (mX=mouseX; mX ==20; mX++){
+            for(mY=mouseY;mY ==30; mY++){
+                line(mX,mY,mX+10,mY+10);
+            }
+            
         }
     }
 }

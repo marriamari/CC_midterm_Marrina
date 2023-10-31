@@ -1,24 +1,36 @@
+//make little dude a class to get location re:width
+//vs location of the mouse
+// if(mouseisoverthedude){ being.(growhair)}
+//growhair(mouse){.hair()atmouselocation}
+//hair(){strokewidth, line(mousex,mousey) mousex + and mousey-}
 
 
 function setup() {
   // put setup code here
   createCanvas(800,800);
-  // pupilX = 470;
-  // pupilY = 540;
-  // pupilA = 330;
-  // pupilB = 540;
-  l = new Brush(mouseX,mouseY);
+  // background(255);
+  h = new Hair(mouseX, mouseY);
+  // l = new Brush(mouseX, mouseY);
+  // b = new Blob();
 }
 
 function draw() {
   // put drawing code here
-  background(255);
-  l.display();
+ //background(255);
+ // b.display();
+//  if(mouseIsPressed){
+//     l.display(mouseX, mouseY);
+// //  }
+if(mouseX <= width && mouseIsPressed){
+  h.display(mouseX, mouseY);
+ }
+ if(mouseY<= height && mouseIsPressed){
+  h.display(mouseX, mouseY);
+ }
   mainEllipse();
   eyesEllipse();
   pupilL();
   pupilR();
-  
 }
 
 function mainEllipse(){ //body of blob
@@ -28,14 +40,14 @@ function mainEllipse(){ //body of blob
   ellipse(width/2,595,400,400);
 }
 
-function eyesEllipse(){ //whites of eyes
+function eyesEllipse(){ //outline for the whites of the eyes
   stroke (0);
   fill(255);
   ellipse(470,520,60,70); //left eye
   ellipse(330,520,60,70); //rigth eye
 }
 
-function pupilL(){ //pupils to the eyes
+function pupilL(){ //map for the left eye
   stroke(0);
   strokeWeight(2);
   fill(0);
@@ -44,7 +56,7 @@ function pupilL(){ //pupils to the eyes
   ellipse(Leftx,Lefty,30,30); //left pupil
 }
 
-function pupilR(){
+function pupilR(){ //map for the right eye
   x=map(mouseX,0,width,320,350);
   y=map(mouseY,0,height,500,540);
   stroke(0);
@@ -52,32 +64,3 @@ function pupilR(){
   fill(0);
   ellipse(x,y,30,30); //right pupil
 }
-
-// function hairBrush(){
-//   if (mouseIsPressed ==true){
-//     line(200,400,250,450);
-
-//   }
-// }
-
-// function mousePressed() {
-//   // Start drawing when the mouse is pressed
-//   // Draw a cluster of lines
-//   for (let i = 0; i < 10; i++) { // Change the number of lines as needed
-//     let x1 = mouseX + random(-20, 10);
-//     let y1 = mouseY + random(-20, 10);
-//     let x2 = pmouseX + random(-20, 10);
-//     let y2 = pmouseY + random(-20, 10);
-    
-//     line(x1, y1, x2, y2);
-//   }
-//   translate(mouseX, mouseY);
-// }
-// function mousePressed() {
-//   // Start drawing when the mouse is pressed
-//   hairBrush(mouseX, mouseY, pmouseX, pmouseY);
-// }
-
-// function hairBrush(x1,y1,x2,y2){
-//   line(x1,y1,x2,y2);
-// }
