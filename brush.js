@@ -1,16 +1,17 @@
 
-class Brush {
+class Feathers {
     constructor(x,y){
         this.position =new createVector (x,y);
     }
+ 
+    display() { //help from chat GPT
+    // Draw the ellipse at the current position
+    ellipse(this.position.x, this.position.y, 100, 50);
+    }
 
-    display(mX, mY) {
-
-        stroke('#d40f78');
-        strokeWeight(2);
-        if(mouseIsPressed){
-            line(mX, mY, mX + 10, mY + 5);
-            print(mouseX, mouseY)
-        }
+    update() {
+    // Update the position of the pillow based on the mouse coordinates
+    this.position.x = mouseX;
+    this.position.y = mouseY;
     }
 }

@@ -1,36 +1,75 @@
-//make little dude a class to get location re:width
-//vs location of the mouse
-// if(mouseisoverthedude){ being.(growhair)}
-//growhair(mouse){.hair()atmouselocation}
-//hair(){strokewidth, line(mousex,mousey) mousex + and mousey-}
+
+//var can be pusehd into an array (particles.push(new Class(createvecotr(width/2,50))))
+//this.particles =[]
+//this.origin = this.position(copy)
+//nature of code 
+
+let option =1;
+
+let cloudA;
+let cloudB;
+let cloudC;
+
+let featherA;
+
+let pillowA;
+let pillowB;
+let pillowC;
+let pillowD;
+let pillowE;
+
+const feathers = new Array(30);
 
 
 function setup() {
-  // put setup code here
   createCanvas(800,800);
-  // background(255);
-  h = new Hair(mouseX, mouseY);
-  // l = new Brush(mouseX, mouseY);
-  // b = new Blob();
+  cloudA = new Clouds (0, 80, .8,0);
+  featherA = new Feathers(200,200);
+  pillowA = new Pillows(100, 100,0,.01)
+  pillowB = new Pillows(200, 200,0,.01)
+  pillowC = new Pillows(200, 100,0,.01)
+  pillowD = new Pillows(100, 50,0,.01)
+  pillowE = new Pillows(400, 30,0,.01)
 }
 
 function draw() {
-  // put drawing code here
- //background(255);
- // b.display();
-//  if(mouseIsPressed){
-//     l.display(mouseX, mouseY);
-// //  }
-if(mouseX <= width && mouseIsPressed){
-  h.display(mouseX, mouseY);
- }
- if(mouseY<= height && mouseIsPressed){
-  h.display(mouseX, mouseY);
- }
-  mainEllipse();
-  eyesEllipse();
-  pupilL();
-  pupilR();
+  if (option==1){
+    background('#a2e1fa')
+    mainEllipse();
+    eyesEllipse();
+    pupilL();
+    pupilR();
+    cloudA.update();
+    cloudA.checkEdges();
+    cloudA.display();
+  }
+  if (option ==2){
+    background(250);
+    featherA.update();
+    featherA.display();
+  }
+  if (option ==3){
+    background(250);
+    pillowA.update();
+    pillowA.checkEdges();
+    pillowA.display();
+    pillowB.update();
+    pillowB.checkEdges();
+    pillowB.display();
+    pillowC.update();
+    pillowC.checkEdges();
+    pillowC.display();
+    pillowD.update();
+    pillowD.checkEdges();
+    pillowD.display();
+  }
+}
+
+
+function exampleB(){
+  stroke(0);
+  strokeWeight(10);
+  ellipse(width/2,height/2,50,50);
 }
 
 function mainEllipse(){ //body of blob
@@ -63,4 +102,12 @@ function pupilR(){ //map for the right eye
   strokeWeight(2);
   fill(0);
   ellipse(x,y,30,30); //right pupil
+}
+
+
+function mousePressed() {
+  option++;
+  if (option>6) {
+    option =1;
+  }
 }

@@ -1,45 +1,38 @@
-// class Blob{
-    
-//    constructor(x,y){
-//     this.x = x;
-//     this.y=y;
-//    }
+class Clouds{
 
-   
-//     display(){
+    constructor(x,y,a1,a2){
+        this.position = new createVector(x,y);
+        this.velocity = new createVector(a1,0); //help from chatGPT - 
+        this.acceleration = new createVector(a2,0); //allows the cloud to move horizontally
+        this.topspeed =4;
+    }
+    update(){
+        this.velocity.add(this.acceleration); //speeds it up horizonaly
+        this.velocity.limit(this.topspeed); //makes it maintain the top speed
+        this.position.add(this.velocity);
+    }
+    display (){
+        stroke(150);
+        strokeWeight(1);
+        fill(255);
+        ellipse(this.position.x, this.position.y, 200,200);
+        ellipse(this.position.x+70, this.position.y+10, 100,100);
+        ellipse(this.position.x-70, this.position.y-5, 120,120);
+        ellipse(this.position.x, this.position.y, 100,100);
+      }
 
-//         this.mainEllipse(); 
-//     }
-
-//     method mainEllipse(){ //body of blob
-//         stroke(0);
-//         strokeWeight(5);
-//         fill(255);
-//         ellipse(width/2,595,400,400);
-//       }
-      
-//       method eyesEllipse(){ //outline for the whites of the eyes
-//         stroke (0);
-//         fill(255);
-//         ellipse(470,520,60,70); //left eye
-//         ellipse(330,520,60,70); //rigth eye
-//       }
-      
-//       function pupilL(){ //map for the left eye
-//         stroke(0);
-//         strokeWeight(2);
-//         fill(0);
-//         Leftx=map(mouseX,0,width,460,480);
-//         Lefty=map(mouseY,0,height,500,540);
-//         ellipse(Leftx,Lefty,30,30); //left pupil
-//       }
-      
-//       function pupilR(){ //map for the right eye
-//         x=map(mouseX,0,width,320,350);
-//         y=map(mouseY,0,height,500,540);
-//         stroke(0);
-//         strokeWeight(2);
-//         fill(0);
-//         ellipse(x,y,30,30); //right pupil
-//       }
-// }
+    checkEdges(){
+        if(this.position.x >width){ //wraps around the screen if it goes off
+            this.position.x=0;
+        }
+        if(this.position.x<0){ 
+            this.position.x=width;
+        }
+        if(this.position.y >height){ 
+            this.position.y=0;
+        }
+        if(this.position.y<0){
+            this.position.y=height;
+        }
+    }
+}
