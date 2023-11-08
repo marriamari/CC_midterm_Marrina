@@ -1,39 +1,50 @@
 
-//var can be pusehd into an array (particles.push(new Class(createvecotr(width/2,50))))
-//this.particles =[]
-//this.origin = this.position(copy)
-//nature of code 
-
 let option =1;
 
 let cloudA;
 let cloudB;
 let cloudC;
+let cloudD;
 
-let featherA;
+let teddyBears;
 
 let pillowA;
 let pillowB;
 let pillowC;
 let pillowD;
 let pillowE;
-
-const feathers = new Array(30);
-
+let pillowF;
+let pillowG;
+let pillowH;
+let pillowI;
+let pillowJ;
+let pillowK;
+let pillowL;
 
 function setup() {
   createCanvas(800,800);
-  cloudA = new Clouds (0, 80, .8,0);
-  featherA = new Feathers(200,200);
-  pillowA = new Pillows(100, 100,0,.01)
-  pillowB = new Pillows(200, 200,0,.01)
-  pillowC = new Pillows(200, 100,0,.01)
-  pillowD = new Pillows(100, 50,0,.01)
-  pillowE = new Pillows(400, 30,0,.01)
+  cloudA = new Clouds (0, 60, .8,0);
+  cloudB= new Clouds (400,100,.8,0);
+  cloudC=new Clouds (700,190,.8,0);
+  cloudD=new Clouds(600,250, .8,0);
+  teddyBears = new Teddy(200,200);
+  pillowA = new Feathers(100, 100,0,.01)
+  pillowB = new Feathers(200, 200,0,.01)
+  pillowC = new Feathers(200, 100,0,.01)
+  pillowD = new Feathers(100, 50,0,.01)
+  pillowE = new Feathers(400, 30,0,.01)
+  pillowF = new Feathers(500, 80,0,.01)
+  pillowG = new Feathers(600, 200,0,.01)
+  pillowH = new Feathers(800, 400,0,.01)
+  pillowI = new Feathers(700, 800,0,.01)
+  pillowJ = new Feathers(400, 700,0,.01)
+  pillowK = new Feathers(650, 300,0,.01)
+  pillowL = new Feathers(750, 550,0,.01)
+
 }
 
 function draw() {
-  if (option==1){
+  if (option==1){ //little blob watching fluffy clouds
     background('#a2e1fa')
     mainEllipse();
     eyesEllipse();
@@ -42,14 +53,25 @@ function draw() {
     cloudA.update();
     cloudA.checkEdges();
     cloudA.display();
+    cloudB.update();
+    cloudB.checkEdges();
+    cloudB.display();
+    cloudC.update();
+    cloudC.checkEdges();
+    cloudC.display();
+    cloudD.update();
+    cloudD.checkEdges();
+    cloudD.display();
   }
-  if (option ==2){
+  if (option ==2){ // teddy bears being pet by fluff ball with reaction
     background(250);
-    featherA.update();
-    featherA.display();
+    teddyBears.update();
+    teddyBears.display();
+    noCursor();
   }
-  if (option ==3){
-    background(250);
+  if (option ==3){ //feathers falling 
+    cursor();
+    background('#d4f5fa');
     pillowA.update();
     pillowA.checkEdges();
     pillowA.display();
@@ -62,14 +84,31 @@ function draw() {
     pillowD.update();
     pillowD.checkEdges();
     pillowD.display();
+    pillowE.update();
+    pillowE.checkEdges();
+    pillowE.display();
+    pillowF.update();
+    pillowF.checkEdges();
+    pillowF.display();
+    pillowG.update();
+    pillowG.checkEdges();
+    pillowG.display();
+    pillowH.update();
+    pillowH.checkEdges();
+    pillowH.display();
+    pillowI.update();
+    pillowI.checkEdges();
+    pillowI.display();
+    pillowJ.update();
+    pillowJ.checkEdges();
+    pillowJ.display();
+    pillowK.update();
+    pillowK.checkEdges();
+    pillowK.display();
+    pillowL.update();
+    pillowL.checkEdges();
+    pillowL.display();
   }
-}
-
-
-function exampleB(){
-  stroke(0);
-  strokeWeight(10);
-  ellipse(width/2,height/2,50,50);
 }
 
 function mainEllipse(){ //body of blob
@@ -86,17 +125,17 @@ function eyesEllipse(){ //outline for the whites of the eyes
   ellipse(330,520,60,70); //rigth eye
 }
 
-function pupilL(){ //map for the left eye
+function pupilL(){ //left pupil
   stroke(0);
   strokeWeight(2);
   fill(0);
-  Leftx=map(mouseX,0,width,460,480);
+  Leftx=map(mouseX,0,width,460,480); //map for the left eye
   Lefty=map(mouseY,0,height,500,540);
   ellipse(Leftx,Lefty,30,30); //left pupil
 }
 
-function pupilR(){ //map for the right eye
-  x=map(mouseX,0,width,320,350);
+function pupilR(){ //right pupil
+  x=map(mouseX,0,width,320,350); //map for the right eye
   y=map(mouseY,0,height,500,540);
   stroke(0);
   strokeWeight(2);
@@ -105,9 +144,9 @@ function pupilR(){ //map for the right eye
 }
 
 
-function mousePressed() {
+function mousePressed() { //when mouse is pressed it switches to a new scene and then loops back to the beginning 
   option++;
-  if (option>6) {
+  if (option>3) {
     option =1;
   }
 }
